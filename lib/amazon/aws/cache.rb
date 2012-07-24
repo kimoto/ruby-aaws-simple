@@ -109,7 +109,7 @@ module Amazon
         cache_file = File.join( @path, digest )
 
         Amazon.dprintf( 'Caching %s...', digest )
-        content.force_encoding("UTF-8")
+        contents.force_encoding("UTF-8")
         #File.open( cache_file, 'w' ) { |f| f.puts contents }
         File.write cache_file, contents
       end

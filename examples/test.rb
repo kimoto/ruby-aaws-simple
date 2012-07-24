@@ -1,6 +1,4 @@
 #!/bin/env ruby
-# encoding: utf-8
-# Author: kimoto
 require 'amazon/aws/simple'
 
 if $0 == __FILE__

@@ -1,6 +1,5 @@
-# $Id: cache.rb,v 1.8 2008/06/10 06:33:46 ianmacd Exp $
+# monkey patch
 #
-
 module Amazon
 
   module AWS
@@ -99,7 +98,7 @@ module Amazon
 
         Amazon.dprintf( 'Fetching %s from cache...', digest )
         #File.open( File.join( cache_file ) ).readlines.to_s
-        File.read( File.join( cache_file ) )
+        File.read(cache_file)
       end
 
 
@@ -110,7 +109,9 @@ module Amazon
         cache_file = File.join( @path, digest )
 
         Amazon.dprintf( 'Caching %s...', digest )
-        File.open( cache_file, 'w' ) { |f| f.puts contents }
+        content.force_encoding("UTF-8")
+        #File.open( cache_file, 'w' ) { |f| f.puts contents }
+        File.write cache_file, contents
       end
 
 

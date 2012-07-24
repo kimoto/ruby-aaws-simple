@@ -51,7 +51,7 @@ module Amazon::AWS::Simple
     end
 
     ## どんだけたくさんのASINでも全部自動でAPIの最大数にあわせて分割してリクエストしてくれる版
-    ## エラーは全部無視します
+    ## エラーは全部無視しますが、@errorsに記録されます
     ITEM_LOOKUP_MAX_ITEMS = 10
     def search_by_asin(*asins)
       asins.flatten.each_slice(ITEM_LOOKUP_MAX_ITEMS).map{ |asin_codes|

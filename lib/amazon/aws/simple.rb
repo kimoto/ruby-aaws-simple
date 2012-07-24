@@ -145,19 +145,19 @@ module Amazon::AWS::Simple
         published_at = release_date
       end
 
-      @asin = item.asin.first.to_s
-      @title = CGI.unescape_html(item.item_attributes.title.join(","))
-      @product_group = item.item_attributes.product_group.first.to_s
+      @asin = item.asin.first.to_s rescue nil
+      @title = CGI.unescape_html(item.item_attributes.title.join(",")) rescue nil
+      @product_group = item.item_attributes.product_group.first.to_s 
       @publisher = item.item_attributes.publisher.join(",") rescue nil
-      @published_at = published_at
-      @image_url = image_url.first.to_s
-      @image_code = image_code
+      @published_at = published_at rescue nil
+      @image_url = image_url.first.to_s rescue nil
+      @image_code = image_code 
       @alt_image_urls = alt_image_urls
       @alt_image_codes = alt_image_codes
       @price = price
       @discount_price = discount_price
       @discount_percentage = discount_percentage
-      @detail = item.detail_page_url
+      @detail = item.detail_page_url rescue nil
       self
     end
 

@@ -110,8 +110,9 @@ module Amazon
 
         Amazon.dprintf( 'Caching %s...', digest )
         contents.force_encoding("UTF-8")
-        #File.open( cache_file, 'w' ) { |f| f.puts contents }
-        File.write cache_file, contents
+        File.open(cache_file, "w"){ |f|
+          f.write contents
+        }
       end
 
 

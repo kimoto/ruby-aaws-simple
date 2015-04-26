@@ -60,8 +60,8 @@ module Amazon::AWS::Simple
       }.flatten
     end
 
-    def search_by_keyword(keyword)
-      _search_by_keyword(keyword)
+    def search_by_keyword(product_group, keyword)
+      _search_by_keyword(product_group, keyword)
     end
 
     ## 更につかいやすくしたやつ
@@ -71,8 +71,8 @@ module Amazon::AWS::Simple
       }
     end
 
-    def retrieve_by_keyword(keyword)
-      search_by_keyword(keyword).map{ |item|
+    def retrieve_by_keyword(product_group, keyword)
+      search_by_keyword(product_group, keyword).map{ |item|
         Data.new.load_from_aws_item(item)
       }
     end
@@ -104,8 +104,8 @@ module Amazon::AWS::Simple
       end
     end
 
-    def _search_by_keyword(keyword)
-      item_search("All", {'Keywords' => keyword})
+    def _search_by_keyword(product_group, keyword)
+      item_search(product_group, {'Keywords' => keyword})
     end
   end
 

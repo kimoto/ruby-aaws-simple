@@ -123,6 +123,7 @@ module Amazon::AWS::Simple
     attr_accessor :discount_price
     attr_accessor :discount_percentage
     attr_accessor :detail
+    attr_accessor :is_adult
 
     def load_from_aws_item(item)
       # 値段関係
@@ -158,6 +159,7 @@ module Amazon::AWS::Simple
       @discount_price = discount_price
       @discount_percentage = discount_percentage
       @detail = item.detail_page_url rescue nil
+      @is_adult = (item.item_attributes.is_adult_product.first.to_s=="1") rescue false
       self
     end
 
